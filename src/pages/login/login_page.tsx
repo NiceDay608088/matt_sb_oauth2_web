@@ -18,7 +18,13 @@ const LoginPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginSchemaType>({ resolver: zodResolver(LoginSchema) });
+  } = useForm<LoginSchemaType>({
+    resolver: zodResolver(LoginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
 
   const onSubmit = (data: LoginSchemaType) => {
     console.log("Form Data:", data);

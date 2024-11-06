@@ -43,7 +43,7 @@ const LoginSchema = z.object({
 type LoginSchemaType = z.infer<typeof LoginSchema>;
 
 const LoginPage = () => {
-  // 3. useForm with ts type and resolver
+  // 3. useForm with ts ty0pe and resolver
   const {
     register,
     handleSubmit,
@@ -109,4 +109,42 @@ prevent UI from jumping by reserving space for the error message
 ```html
 <p className=" text-red-500 min-h-6"></p>
 <p style={{ color: "red", minHeight: "1.5em" }}></p>
+```
+
+# Expand
+
+the same effect of below code
+
+```tsx
+<DashSubPage name={m.name} age={m.age} /> <br />
+<DashSubPage {...m} />
+```
+
+```tsx
+const DashboardPage = () => {
+  const m = {
+    name: "a",
+    age: 11,
+  };
+  return (
+    <div>
+      dashboard_page <br />
+      <DashSubPage name={m.name} age={m.age} /> <br />
+      <DashSubPage {...m} />
+    </div>
+  );
+};
+
+interface DashSubPageProp {
+  name: String;
+  age: Number;
+}
+
+const DashSubPage = ({ name, age }: DashSubPageProp) => {
+  return (
+    <div>
+      <span>name: {name}</span> <span>age: {age.toString()}</span>
+    </div>
+  );
+};
 ```
